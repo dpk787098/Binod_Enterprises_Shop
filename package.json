@@ -1,32 +1,45 @@
 {
   "name": "binod-enterprises-shop",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "node server/index.js",
+    "start": "NODE_ENV=production node server/index.js",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "desktop": "npm run build && electron ."
+    "desktop": "npm run build && electron .",
+    "desktop:win": "npm run build && electron-builder --win"
   },
   "main": "electron/main.cjs",
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
+    "bcryptjs": "latest",
+    "cors": "latest",
+    "express": "latest",
+    "express-rate-limit": "latest",
+    "helmet": "latest",
+    "jsonwebtoken": "latest",
+    "lowdb": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "xlsx": "latest"
+    "vite": "latest",
+    "xlsx": "latest",
+    "zod": "latest"
   },
   "devDependencies": {
     "electron": "latest",
     "electron-builder": "latest",
+    "supertest": "latest",
     "vitest": "latest"
   },
   "build": {
     "appId": "com.binod.enterprises.shop",
     "productName": "Binod Enterprises Shop",
+    "asar": true,
     "win": { "target": ["nsis"] },
-    "files": ["dist/**/*", "electron/**/*", "package.json"]
+    "files": ["dist/**/*", "electron/**/*", "server/**/*", "package.json"]
   }
 }
